@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import Layout from '../components/layout'
-import Button from '../components/button'
+import { Layout, Button } from '../components'
 
 export default class Page2 extends Component {
 
