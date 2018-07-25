@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Michael K. Clements <michael.clements@bedegaming.com>",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.5.1",
     "gatsby": "next",
     "gatsby-image": "^1.0.55",

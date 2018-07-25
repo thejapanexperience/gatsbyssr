@@ -1,12 +1,51 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React, { Component } from 'react'
+import axios from 'axios'
 
 import Layout from '../components/layout'
+import Button from '../components/button'
 
-export default () => (
-  <Layout>
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to='/'>Go back to the homepage</Link>
-  </Layout>
-)
+export default class Page2 extends Component {
+
+  state = {
+    pokeUrl: ''
+  }
+
+  componentDidMount() {
+    this.getPokemon(1)
+  }
+
+  render() {
+    return (
+      <Layout>
+        <h1>Hi from the second page</h1>
+        <p>Welcome to page 2</p>
+        {
+          this.state.pokeUrl
+          ? <img alt='pokemon' src={this.state.pokeUrl} />
+          : null
+        }
+        <Button onClick={this.handleClick}>Get Pokémon</Button>
+      </Layout>
+    )
+  }
+
+  handleClick = () => {
+
+    const num = Math.floor(Math.random() * Math.floor(300))
+
+    this.getPokemon(num)
+
+  }
+
+  getPokemon = (num) => {
+
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${num}`)
+      .then(data => {
+
+        this.setState({ pokeUrl: data.data.sprites.front_shiny })
+
+      })
+  }
+
+}
