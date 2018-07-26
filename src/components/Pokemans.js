@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
 
+import { getPokemonAsync } from '../redux/actionCreators'
 import { Button } from './'
 
-export default class Pokemans extends Component {
-
-  state = {
-    pokeUrl: ''
-  }
+class Pokemans extends Component {
 
   componentDidMount() {
-    this.getPokemon(1)
+    this.props.getPokemon(1)
   }
 
   render() {
+    console.log(this.props)
     return (
       <>
         <h1>Choose a random pokemon</h1>
         {
-          this.state.pokeUrl
-          ? <img alt='pokemon' src={this.state.pokeUrl} />
+          this.props.pokeUrl
+          ? <img alt='pokemon' src={this.props.pokeUrl} />
           : null
         }
         <Button onClick={this.handleClick}>Get Pokémon</Button>
@@ -28,22 +26,22 @@ export default class Pokemans extends Component {
   }
 
   handleClick = () => {
-
+    console.log('handleClick')
     const num = Math.floor(Math.random() * Math.floor(300))
-
-    this.getPokemon(num)
-
+    this.props.getPokemon(num)
   }
-
-  getPokemon = (num) => {
-
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${num}`)
-      .then(data => {
-
-        this.setState({ pokeUrl: data.data.sprites.front_shiny })
-
-      })
-  }
-
 }
+
+//Redux
+// Get data from store
+const mapStateToProps = state => ({ 
+  pokeUrl: state.pokeUrl 
+})
+// Get actions from actionCreators
+const mapDispatchToProps = dispatch => ({
+  getPokemon(num) {
+    dispatch(getPokemonAsync(num))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pokemans)
