@@ -14,6 +14,8 @@ const Inner = styled.div`
 
 const Text = styled.p`
   color: #fff;
+  padding: 0;
+  margin: 0;
 `
 
 const Footer = () => (
@@ -23,7 +25,7 @@ const Footer = () => (
         query={graphql`
           query {
             site {
-              buildTime(formatString: "DD/MM/YYYY")
+              buildTime(formatString: "MMMM Do, YYYY")
             }
           }
         `}

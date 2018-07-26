@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Layout } from '../components'
@@ -13,13 +13,19 @@ const Index = () => (
             ...GatsbyImageSharpSizes_tracedSVG
           }
         }
+        content: markdownRemark(fileAbsolutePath: { regex: "/data/homepage/" }) {
+          frontmatter {
+            title
+          }
+          html
+        }
       }
     `}
     render={data => (
       <Layout>
 
-        <h1>Hi people</h1>
-        <Link to='/page-2'>Go to page 2</Link>
+        <h1 dangerouslySetInnerHTML={{__html: data.content.frontmatter.title }} />
+        <div dangerouslySetInnerHTML={{__html: data.content.html}} />
         <Img sizes={data.fillMurray.sizes} />
 
       </Layout>

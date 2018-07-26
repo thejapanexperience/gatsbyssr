@@ -29,10 +29,13 @@ const StyledLink = styled(Link)`
 
 const Header = ({ siteTitle }) => (
   <Container>
+
     <Inner>
+
       <StyledLink to='/'>
         {siteTitle}
       </StyledLink>
+
       <StaticQuery
         query={graphql`
           query Navigation {
@@ -61,7 +64,9 @@ const Header = ({ siteTitle }) => (
           </Navigation>
         )}
       />
+
     </Inner>
+
   </Container>
 )
 
