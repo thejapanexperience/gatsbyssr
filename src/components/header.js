@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -8,14 +8,23 @@ const Container = styled.div`
 `
 
 const Inner = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: 960px;
   padding: 1.45rem 1.0875rem;
 `
 
+const Navigation = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+`
+
 const StyledLink = styled(Link)`
   color: #fff;
-  text-decoration: none;
 `
 
 const Header = ({ siteTitle }) => (
@@ -24,6 +33,34 @@ const Header = ({ siteTitle }) => (
       <StyledLink to='/'>
         {siteTitle}
       </StyledLink>
+      <StaticQuery
+        query={graphql`
+          query Navigation {
+            allNavigationJson {
+              edges {
+                node {
+                  title
+                  url
+                }
+              }
+            }
+          }
+        `}
+        render={data => (
+          <Navigation>
+            {
+              data.allNavigationJson.edges.map(({ node: navItem }, i) =>
+                <StyledLink
+                  key={i}
+                  to={navItem.url}
+                >
+                  {navItem.title}
+                </StyledLink>
+              )
+            }
+          </Navigation>
+        )}
+      />
     </Inner>
   </Container>
 )

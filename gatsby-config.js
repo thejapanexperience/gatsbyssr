@@ -1,23 +1,31 @@
 module.exports = {
   siteMetadata: {
-    title: 'Bolt gatsby',
+    title: `Bolt gatsby`,
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-plugin-styled-components',
+      resolve: `gatsby-plugin-styled-components`,
       options: {
         ssr: true
       },
     },
-    'gatsby-plugin-sharp',
+    `gatsby-plugin-sharp`,
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'images',
-        path: `${__dirname}/src/images/`,
+        name: `data`,
+        path: `./src/data/`,
       },
     },
-    'gatsby-transformer-sharp'
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `./src/images/`,
+      },
+    },
+    `gatsby-transformer-json`,
+    `gatsby-transformer-sharp`
   ],
 }
