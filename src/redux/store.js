@@ -1,13 +1,22 @@
-import { createStore, compose, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import reducer from './reducers'
+import { createStore, compose, applyMiddleware, combineReducers} from 'redux'
+import createSagaMiddleware from 'redux-saga'
+
+import * as reducers from './indexReducers';
+import { pokemonSaga } from './indexSagas';
+
+const rootReducer = combineReducers(reducers)
+
+const sagaMiddleware = createSagaMiddleware()
+const middleware = [sagaMiddleware]
 
 const store = createStore(
-  reducer,
+  rootReducer,
   compose(
-    applyMiddleware(thunk), // allow redux to use thunks (or other middleware)
+    applyMiddleware(...middleware),
     typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
   )
 )
 
 export default store
+
+sagaMiddleware.run(pokemonSaga)

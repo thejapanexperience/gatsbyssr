@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import styled, { injectGlobal } from 'styled-components'
 
-import { Header, Footer } from './'
+import { Header, Footer } from '.'
 
 injectGlobal`
   body {

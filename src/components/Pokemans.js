@@ -1,47 +1,58 @@
+// imports
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { getPokemonAsync } from '../redux/actionCreators'
-import { Button } from './'
+// actionCreators
+import { getPokemon } from '../redux/duckPokemon'
+
+// Components
+import { Button } from '.'
 
 class Pokemans extends Component {
 
   componentDidMount() {
-    this.props.getPokemon(1)
+    this.getRandomPokemon()
+  }
+
+  randomNumberGenerator = () => {
+    return Math.floor(Math.random() * Math.floor(300))
+  }
+
+  getRandomPokemon = () => {
+    this.props.getPokemon(this.randomNumberGenerator())
   }
 
   render() {
-    console.log(this.props)
     return (
       <>
         <h1>Choose a random pokemon</h1>
+        {
+          this.props.pokeName
+          ? <h2>You've got {this.props.pokeName}!</h2>
+          : <h2>What will you get ???</h2>
+        }
         {
           this.props.pokeUrl
           ? <img alt='pokemon' src={this.props.pokeUrl} />
           : null
         }
-        <Button onClick={this.handleClick}>Get Pokémon</Button>
+        <Button onClick={this.getRandomPokemon}>Get Pokémon</Button>
       </>
     )
   }
-
-  handleClick = () => {
-    console.log('handleClick')
-    const num = Math.floor(Math.random() * Math.floor(300))
-    this.props.getPokemon(num)
-  }
 }
 
-//Redux
-// Get data from store
-const mapStateToProps = state => ({ 
-  pokeUrl: state.pokeUrl 
+// Redux
+// Get data from store and add to props
+const mapStateToProps = store => ({ 
+  pokeUrl: store.pokeUrl ,
+  pokeName: store.pokeName
 })
-// Get actions from actionCreators
-const mapDispatchToProps = dispatch => ({
-  getPokemon(num) {
-    dispatch(getPokemonAsync(num))
-  }
-})
+// Pass actionCreators into props
+const mapDispatchToProps = dispatch => bindActionCreators(
+  { getPokemon }, dispatch
+)
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokemans)

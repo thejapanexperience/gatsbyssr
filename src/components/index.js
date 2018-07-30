@@ -1,7 +1,7 @@
-import Layout from './Layout.js'
-import Header from './Header.js'
+import Layout from './layout.js'
+import Header from './header.js'
 import Footer from './Footer.js'
-import Button from './Button.js'
+import Button from './button.js'
 import Pokemans from './Pokemans.js'
 
 export {
