@@ -2,7 +2,7 @@ import { createStore, compose, applyMiddleware, combineReducers} from 'redux'
 import createSagaMiddleware from 'redux-saga'
 
 import * as reducers from './indexReducers';
-import { pokemonSaga } from './indexSagas';
+import { pokemonSaga, gamesSaga } from './indexSagas';
 
 const rootReducer = combineReducers(reducers)
 
@@ -20,3 +20,4 @@ const store = createStore(
 export default store
 
 sagaMiddleware.run(pokemonSaga)
+sagaMiddleware.run(gamesSaga)
