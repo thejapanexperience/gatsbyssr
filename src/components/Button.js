@@ -4,9 +4,11 @@ import styled from 'styled-components'
 const StyledButton = styled.button`
   background-color: pink;
   border: 0;
-  border-radius: 10px;
-  font-size: 1.25rem;
-  padding: 20px;
+  border-radius: 3px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 2rem;
+  text-transform: uppercase;
 `
 
 const Button = ({children, className, onClick}) => (

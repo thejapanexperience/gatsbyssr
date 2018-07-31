@@ -8,25 +8,25 @@ const Index = () => (
   <StaticQuery
     query={graphql`
       query {
-        fillMurray: imageSharp {
+        banner: imageSharp(original: {
+          src: {
+            regex: "/banner/"
+          }
+        }) {
           sizes(quality: 90) {
             ...GatsbyImageSharpSizes_tracedSVG
           }
         }
-        content: markdownRemark(fileAbsolutePath: { regex: "/data/homepage/" }) {
-          frontmatter {
-            title
-          }
-          html
-        }
       }
     `}
     render={data => (
-      <Layout>
+      <Layout
+        banner={<Img sizes={data.banner.sizes} />}
+      >
 
-        <h1 dangerouslySetInnerHTML={{__html: data.content.frontmatter.title }} />
-        <div dangerouslySetInnerHTML={{__html: data.content.html}} />
-        <Img sizes={data.fillMurray.sizes} />
+        <div>
+          <h1>hi</h1>
+        </div>
 
       </Layout>
     )}

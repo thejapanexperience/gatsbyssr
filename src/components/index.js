@@ -1,13 +1,13 @@
-import Layout from './layout.js'
-import Header from './header.js'
-import Footer from './Footer.js'
-import Button from './button.js'
-import Pokemans from './Pokemans.js'
-import BoltGamesTest from './BoltGamesTest.js'
+import Layout from './Layout'
+import Header from './Header'
+import Footer from './Footer'
+import Button from './Button'
+import Pokemans from './Pokemans'
+import BoltGamesTest from './BoltGamesTest'
 
 export {
-  Pokemans,
   BoltGamesTest,
+  Pokemans,
   Button,
   Footer,
   Header,

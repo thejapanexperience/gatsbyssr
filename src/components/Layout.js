@@ -28,7 +28,7 @@ const Content = styled.div`
   padding: 0px 1.0875rem 1.45rem;
 `
 
-const Layout = ({ children, data }) => (
+const Layout = ({ banner, children, data }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -50,6 +50,12 @@ const Layout = ({ children, data }) => (
         />
 
         <Header siteTitle={data.site.siteMetadata.title} />
+
+        {
+          banner
+          ? banner
+          : null
+        }
 
         <Content>
           {children}
