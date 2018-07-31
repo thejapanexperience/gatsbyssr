@@ -6,8 +6,14 @@ import styled, { injectGlobal } from 'styled-components'
 import { Header, Footer } from '.'
 
 injectGlobal`
+  html {
+    font-size: 62.5%;
+  }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 1.6rem;
+    line-height: 1.5;
     margin: 0;
   }
 `

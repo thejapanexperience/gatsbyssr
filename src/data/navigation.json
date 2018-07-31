@@ -1,15 +1,11 @@
 [
   {
-    "title": "Home",
-    "url": "/"
+    "title": "Games",
+    "url": "/page-3"
   },
   {
     "title": "Pokemans",
     "url": "/page-2"
-  },
-  {
-    "title": "Games",
-    "url": "/games"
   },
   {
     "title": "Promotions",

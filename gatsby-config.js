@@ -5,6 +5,14 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Raleway\:500,700,800,900`
+        ]
+      }
+    },
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         ssr: true
