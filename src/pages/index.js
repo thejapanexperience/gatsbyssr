@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { Layout, Tab, TabList, Tabs, TabPanel, BoltGamesTest } from '../components'
 
 const StyledTabList = styled(TabList)`
-  margin-top: -45px;
+  transform: translateY(-50%);
 `
 
 const tabData = [
@@ -57,7 +57,7 @@ const Index = () => (
           </TabPanel>
 
           <TabPanel>
-            <BoltGamesTest />
+            hi
           </TabPanel>
 
           <TabPanel>
@@ -67,7 +67,7 @@ const Index = () => (
           <TabPanel>
             <BoltGamesTest />
           </TabPanel>
-          
+
         </Tabs>
 
       </Layout>

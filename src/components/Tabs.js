@@ -29,15 +29,19 @@ const Tab = styled(UnstyledTab).attrs({
   selectedClassName: 'selected',
   disabledClassName: 'disabled'
 })`
+  align-items: center;
   background-color: #fff;
   border-bottom: 4px solid #e4e4e4;
   color: #7C7F8C;
   cursor: pointer;
-  flex-grow: 1;
+  display: flex;
+  flex: 1;
   font-size: 1.6rem;
   font-weight: 700;
   list-style: none;
-  padding: 2rem 0;
+  justify-content: center;
+  min-height: 68px;
+  position: relative;
   text-align: center;
   text-transform: uppercase;
   transition: all 300ms ease;
@@ -57,7 +61,7 @@ const Tab = styled(UnstyledTab).attrs({
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     color: #D20042;
     font-weight: 900;
-    padding: 3rem 0;
+    min-height: 88px;
     z-index: 1;
   }
 
@@ -66,23 +70,33 @@ const Tab = styled(UnstyledTab).attrs({
     cursor: not-allowed;
   }
 
-  &:hover {
-    transform: translate3d(0, 0, 10px);
+  &::before {
+    background-color: rgba(133, 188, 255, 1);
+    content: '';
+    height: 4px;
+    left: 50%;
+    top: 100%;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: all 300ms ease;
+    width: 0%;
+  }
 
-    &::before {
-      box-shadow: rgba(0,0,0,0.1);
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+  &:not(.selected) {
+
+    &:hover {
+
+      &::before {
+        width: 100%;
+      }
+
     }
+
   }
 `
 
 const TabPanel = styled(UnstyledTabPanel).attrs({ selectedClassName: 'selected' })`
   display: none;
-  padding: 10px 20px;
 
   &.selected {
     display: block;

@@ -16,10 +16,11 @@ const StyledButton = styled(Link)`
   text-transform: uppercase;
 `
 
-const Button = ({children, className, onClick}) => (
+const Button = ({children, className, onClick, to}) => (
   <StyledButton
     className={className}
     onClick={onClick}
+    to={to}
   >
     {children}
   </StyledButton>

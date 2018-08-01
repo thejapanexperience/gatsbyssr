@@ -2,13 +2,23 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+import { Card } from './'
 
 // actionCreators
 import { getGames } from '../redux/duckGames'
 
+const GamesContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
+
+const ErrorText = styled.h1`
+  color: red;
+`
+
 // Components
-
-
 class BoltGamesTest extends Component {
 
   componentDidMount() {
@@ -19,19 +29,22 @@ class BoltGamesTest extends Component {
 
     const { games } = this.props
 
-    let displayGames
-
-    if (games){
-      displayGames =
-        games.map( game => <img key={game.gameId} src={game.images[0].url} alt=""/> )
-    } else {
-      displayGames = <h2>Ruh roh...</h2>
-    }
-
     return (
       <>
-        <h1>Bede Games</h1>
-        {displayGames}
+        {
+          games
+          ? <GamesContainer>
+              {
+                games.map((game, i) =>
+                  <Card
+                    data={game}
+                    key={i}
+                  />
+                )
+              }
+            </GamesContainer>
+          : <ErrorText>Ruh roh...</ErrorText>
+        }
       </>
     )
   }
@@ -39,7 +52,7 @@ class BoltGamesTest extends Component {
 
 // Redux
 // Get data from store and add to props
-const mapStateToProps = store => ({ 
+const mapStateToProps = store => ({
   games: store.games,
 })
 // Pass actionCreators into props

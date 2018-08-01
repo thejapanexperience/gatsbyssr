@@ -40,6 +40,7 @@ const StyledLink = styled(Link)`
     content: '';
     height: 300px;
     left: 50%;
+    pointer-events: none;
     position: absolute;
     top: 50%;
     transform: scale(0) translate(-50%, -50%);

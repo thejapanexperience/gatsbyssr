@@ -6,8 +6,10 @@ import Pokemans from './Pokemans'
 import BoltGamesTest from './BoltGamesTest'
 import { Tab, TabList, Tabs, TabPanel } from './Tabs'
 import Banner from './Banner'
+import Card from './Card'
 
 export {
+  Card,
   Banner,
   Tab,
   TabList,
