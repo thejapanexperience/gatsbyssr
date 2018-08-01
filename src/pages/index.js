@@ -1,8 +1,20 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import styled from 'styled-components'
 
-import { Layout } from '../components'
+import { Layout, Tab, TabList, Tabs, TabPanel } from '../components'
+
+const StyledTabList = styled(TabList)`
+  transform: translateY(-50%);
+`
+
+const tabData = [
+  { "title": "Featured" },
+  { "title": "Slots" },
+  { "title": "Tables" },
+  { "title": "Live Casino" }
+]
 
 const Index = () => (
   <StaticQuery
@@ -24,9 +36,20 @@ const Index = () => (
         banner={<Img sizes={data.banner.sizes} />}
       >
 
-        <div>
-          <h1>hi</h1>
-        </div>
+        <Tabs>
+          <StyledTabList>
+            {
+              tabData.map((tab, i) =>
+                <Tab>{tab.title}</Tab>
+              )
+            }
+          </StyledTabList>
+
+          <TabPanel>Hi</TabPanel>
+          <TabPanel>Hi</TabPanel>
+          <TabPanel>Hi</TabPanel>
+          <TabPanel>Hi</TabPanel>
+        </Tabs>
 
       </Layout>
     )}

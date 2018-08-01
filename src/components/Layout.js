@@ -11,6 +11,7 @@ injectGlobal`
   }
 
   body {
+    background-color: #F9F9F9;
     font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 1.6rem;
     line-height: 1.5;

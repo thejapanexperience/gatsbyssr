@@ -19,7 +19,7 @@ const Navigation = styled.div`
 const LogoLink = styled(Link)`
   align-items: center;
   display: flex;
-  padding: 2rem;
+  padding: 2rem 3rem;
 `
 
 const StyledLink = styled(Link)`
@@ -35,7 +35,7 @@ const StyledLink = styled(Link)`
   position: relative;
 
   &::before {
-    background-color: #d5eaff;
+    background-color: #e7f0f9;
     border-radius: 50%;
     content: '';
     height: 300px;
@@ -44,14 +44,14 @@ const StyledLink = styled(Link)`
     top: 50%;
     transform: scale(0) translate(-50%, -50%);
     transform-origin: top left;
-    transition: all 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
     width: 300px;
   }
 
   span {
     position: relative;
     transition: all 200ms ease;
-    top: 0;
+    opacity: 0.8;
     z-index: 2;
   }
 
@@ -62,7 +62,7 @@ const StyledLink = styled(Link)`
     }
 
     span {
-      top: -3px;
+      opacity: 1;
     }
 
   }
