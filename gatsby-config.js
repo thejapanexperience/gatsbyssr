@@ -3,7 +3,6 @@ module.exports = {
     title: `Bolt gatsby`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -18,21 +17,22 @@ module.exports = {
         ssr: true
       },
     },
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `./src/data/`,
+        path: `${__dirname}/src/data/`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `./src/images/`,
+        path: `${__dirname}/src/images/`,
       },
     },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`

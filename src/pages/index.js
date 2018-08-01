@@ -1,12 +1,11 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
 import styled from 'styled-components'
 
-import { Layout, Tab, TabList, Tabs, TabPanel } from '../components'
+import { Layout, Tab, TabList, Tabs, TabPanel, BoltGamesTest } from '../components'
 
 const StyledTabList = styled(TabList)`
-  transform: translateY(-50%);
+  margin-top: -45px;
 `
 
 const tabData = [
@@ -20,35 +19,55 @@ const Index = () => (
   <StaticQuery
     query={graphql`
       query {
-        banner: imageSharp(original: {
-          src: {
-            regex: "/banner/"
-          }
-        }) {
-          sizes(quality: 90) {
-            ...GatsbyImageSharpSizes_tracedSVG
+        banner: allBannerJson {
+          edges {
+            node {
+              title
+              subtitle
+              buttonTo
+              buttonTitle
+              bannerImage {
+                childImageSharp {
+                  sizes(maxWidth: 1440, quality: 90) {
+                    ...GatsbyImageSharpSizes_withWebp
+                  }
+                }
+              }
+            }
           }
         }
       }
     `}
     render={data => (
       <Layout
-        banner={<Img sizes={data.banner.sizes} />}
+        bannerData={data.banner.edges}
       >
 
         <Tabs>
           <StyledTabList>
             {
               tabData.map((tab, i) =>
-                <Tab>{tab.title}</Tab>
+                <Tab key={i}>{tab.title}</Tab>
               )
             }
           </StyledTabList>
 
-          <TabPanel>Hi</TabPanel>
-          <TabPanel>Hi</TabPanel>
-          <TabPanel>Hi</TabPanel>
-          <TabPanel>Hi</TabPanel>
+          <TabPanel>
+            <BoltGamesTest />
+          </TabPanel>
+
+          <TabPanel>
+            <BoltGamesTest />
+          </TabPanel>
+
+          <TabPanel>
+            <BoltGamesTest />
+          </TabPanel>
+
+          <TabPanel>
+            <BoltGamesTest />
+          </TabPanel>
+          
         </Tabs>
 
       </Layout>

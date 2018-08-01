@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import styled, { injectGlobal } from 'styled-components'
 
-import { Header, Footer } from '.'
+import { Header, Footer, Banner } from '.'
 
 injectGlobal`
   html {
@@ -29,7 +29,7 @@ const Content = styled.div`
   padding: 0px 1.0875rem 1.45rem;
 `
 
-const Layout = ({ banner, children, data }) => (
+const Layout = ({ bannerData, children, data }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -53,8 +53,8 @@ const Layout = ({ banner, children, data }) => (
         <Header siteTitle={data.site.siteMetadata.title} />
 
         {
-          banner
-          ? banner
+          bannerData
+          ? <Banner data={bannerData} />
           : null
         }
 

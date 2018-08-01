@@ -18,6 +18,7 @@ const TabList = styled(UnstyledTabList)`
   justify-content: space-between;
   margin: 0;
   padding: 0;
+  perspective: 1000;
   position: absolute;
   top: 0;
   left: 0;
@@ -52,6 +53,7 @@ const Tab = styled(UnstyledTab).attrs({
 
   &.selected {
     border-color: #FE3D90;
+    border-radius: 3px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     color: #D20042;
     font-weight: 900;
@@ -62,6 +64,19 @@ const Tab = styled(UnstyledTab).attrs({
   &.disabled {
     color: #e0e0e0;
     cursor: not-allowed;
+  }
+
+  &:hover {
+    transform: translate3d(0, 0, 10px);
+
+    &::before {
+      box-shadow: rgba(0,0,0,0.1);
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
   }
 `
 
