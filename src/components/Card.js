@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import Button from './Button'
+import { Button } from './'
 
 const Container = styled(Link)`
   background-color: #fff;
