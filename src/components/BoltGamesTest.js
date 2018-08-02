@@ -15,6 +15,7 @@ const GamesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  perspective: 1000px;
 `
 
 const ErrorText = styled.h1`
@@ -74,7 +75,7 @@ class BoltGamesTest extends Component {
       this.filterGames('live')
     }
   }
-  
+
   sortGamesAlphabetically(){
     const games = this.state.games.sort(((a,b) => {
       if(a.catalogueName < b.catalogueName) return -1
@@ -87,7 +88,7 @@ class BoltGamesTest extends Component {
       alphabetical: !this.state.alphabetical
     })
   }
-  
+
   filterGames(type = 'live'){
     const games = this.props.games
     let filteredGames
@@ -107,7 +108,7 @@ class BoltGamesTest extends Component {
   }
 
   render() {
-    
+
     const { games } = this.state
 
     return (

@@ -74,6 +74,7 @@ const Buttons = styled.div`
   display: flex;
   justify-content: flex-end;
   flex: 1;
+  padding-right: 2rem;
 `
 
 const Login = styled(Button)`
@@ -85,6 +86,8 @@ const Login = styled(Button)`
 const JoinNow = styled(Button)`
   background-image: linear-gradient(180deg, #EF2033 0%, #FE3D91 100%);
   color: #fff;
+  margin-left: 2rem;
+  padding: 2.3rem 3rem;
 `
 
 const Header = () => (

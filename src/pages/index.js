@@ -9,10 +9,8 @@ const StyledTabList = styled(TabList)`
 `
 
 const tabData = [
-  { "title": "Featured" },
-  { "title": "Slots" },
-  { "title": "Tables" },
-  { "title": "Live Casino" }
+  { "title": "Live Casino" },
+  { "title": "Virtual Casino" }
 ]
 
 const Index = () => (
