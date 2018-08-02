@@ -18,7 +18,6 @@ const Image = styled.img`
 
 const Card = ({ data }) =>
   <Container>
-    {console.log(data)}
     <Image
       alt={data.displayName}
       src={data.images[0].url}
