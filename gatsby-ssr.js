@@ -1,22 +1,21 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
-
- // You can delete this file if you're not using it
-
 import React from 'react'
 import { Provider } from 'react-redux'
 import { renderToString } from 'react-dom/server'
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 import store from './src/redux/store'
 
-export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
+exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
+  const sheet = new ServerStyleSheet()
 
-  const ConnectedBody = () => (
-    <Provider store={store}>
-      {bodyComponent}
-    </Provider>
+  replaceBodyHTMLString(
+    renderToString(
+      <Provider store={store}>
+        <StyleSheetManager sheet={sheet.instance}>
+          {bodyComponent}
+        </StyleSheetManager>
+      </Provider>
+    )
   )
-  replaceBodyHTMLString(renderToString(<ConnectedBody/>))
+
+  setHeadComponents([sheet.getStyleElement()])
 }
