@@ -29,7 +29,7 @@ const Index = () => (
               bannerImage {
                 childImageSharp {
                   sizes(maxWidth: 1440, quality: 90) {
-                    ...GatsbyImageSharpSizes_withWebp
+                    ...GatsbyImageSharpSizes_tracedSVG
                   }
                 }
               }

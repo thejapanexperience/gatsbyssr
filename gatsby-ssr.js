@@ -13,10 +13,10 @@ import store from './src/redux/store'
 
 export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
 
-    const ConnectedBody = () => (
-        <Provider store={store}>
-            {bodyComponent}
-        </Provider>
-    )
-    replaceBodyHTMLString(renderToString(<ConnectedBody/>))
+  const ConnectedBody = () => (
+    <Provider store={store}>
+      {bodyComponent}
+    </Provider>
+  )
+  replaceBodyHTMLString(renderToString(<ConnectedBody/>))
 }
